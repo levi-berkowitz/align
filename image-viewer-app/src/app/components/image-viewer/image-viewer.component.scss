@@ -1,0 +1,56 @@
+.selected-image-container {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+
+  .selected-image-author {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    padding: 10px;
+    background-color: rgb(255 255 255 / 60%);
+    transition: all 0.4s;
+  }
+
+  &:hover .selected-image-author {
+    top: 0;
+  }
+}
+
+.thumbnails-container {
+  $thumbnail-image-size: 250px;
+  $displayed-thumbnails: 3;
+  width: $thumbnail-image-size * $displayed-thumbnails;
+  display: flex;
+  .thumbnail-image {
+    height: $thumbnail-image-size;
+    width: $thumbnail-image-size;
+    background-color: aliceblue;
+    cursor: pointer;
+
+    &:hover{
+      filter: brightness(50%);
+    }
+
+    &.selected {
+      filter: brightness(35%);
+    }
+  }
+}
+
+.arrow-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  cursor: pointer;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  img {
+    height: 60px;
+  }
+}

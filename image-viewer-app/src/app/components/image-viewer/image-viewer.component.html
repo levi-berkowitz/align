@@ -1,0 +1,27 @@
+<div style="height:100%; width: 100%; display: flex; flex-direction: column">
+  <section #selectedImageSection class="selected-image-container">
+    <ng-container *ngIf="isInitialized">
+      <div class="selected-image-author">{{selectedImageData.author}}</div>
+      <img *ngIf="isInitialized" [src]="selectedImageSrc" style="height: 100%; width: 100%">
+    </ng-container>
+  </section>
+  <section *ngIf="isInitialized" style="flex: 0 0 250px; display: flex; justify-content: center; align-items: stretch">
+    <div *ngIf="thumbnailStartIndex > 0"
+         class="arrow-button"
+         (click)="onLeftArrowClicked()">
+      <img src="assets/left-arrow.png">
+    </div>
+    <div class="thumbnails-container">
+      <img *ngFor="let imageDate of thumbnailImagesData"
+           [src]="getSmallImageSrc(imageDate.id)"
+           class="thumbnail-image"
+           [class.selected]="imageDate === selectedImageData"
+           (click)="handleImageClick(imageDate)">
+    </div>
+    <div *ngIf="thumbnailStartIndex < maxThumbnailStartIndex"
+         class="arrow-button"
+         (click)="onRightArrowClicked()">
+      <img src="assets/right-arrow.png">
+    </div>
+  </section>
+</div>
